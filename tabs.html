@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>popupEdit</title>
+
+    <link rel="stylesheet" href="./css/TabsEdit.css" />
+  </head>
+  <body>
+    <h1>占位置的</h1>
+    <h1>占位置的</h1>
+    <!--popupEdit-->
+    <div id="openTabsEdit"><img src="./img/edit.png" alt="" /></div>
+
+    <div id="popup" style="display:none;">
+      <div id="close"><img src="./img/close.png" alt="" /></div>
+      <!--我的频道-->
+      <div class="mine">
+        <div class="mineFirstDiv">
+          <div class="mineChannel">我的频道</div>
+          <div class="clickChnnel">点击进入频道</div>
+        </div>
+        <div class="editOrCompelete" id="editOrCompelete">编辑</div>
+      </div>
+      <div class="wrap" id="gridDemo1"></div>
+      <!--推荐频道-->
+      <div class="recommend">
+        <div class="mineFirstDiv">
+          <div class="mineChannel">频道推荐</div>
+          <div class="clickChnnel">点击添加频道</div>
+        </div>
+      </div>
+      <div class="wrap" id="gridDemo2"></div>
+    </div>
+  </body>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script sc="js/flexible.js"></script>
+  <script src="js/Sortable.js"></script>
+  <script src="js/tabsEdit.js"></script>
+  <script>
+    let data1 = [
+      { name: "宽度宽度宽度", id: "1", dragable: false },
+      { name: "自动", id: "2", dragable: false },
+      { name: "收缩", id: "3", dragable: true },
+      { name: "导致", id: "4", dragable: true },
+      { name: "这个", id: "5", dragable: true },
+      { name: "元素", id: "6", dragable: true },
+      { name: "宽度", id: "7", dragable: true }
+    ];
+    let data2 = [
+      { name: "虽然", id: "8", dragable: true },
+      { name: "也是", id: "9", dragable: true },
+      { name: "两端", id: "10", dragable: true },
+      { name: "单位", id: "11", dragable: true },
+      { name: "备份", id: "12", dragable: true },
+      { name: "分为虽然虽然", id: "13", dragable: true }
+    ];
+    let gridDemo1 = document.getElementById("gridDemo1");
+    let gridDemo2 = document.getElementById("gridDemo2");
+    let edit1 = new editSortMine(
+      gridDemo1,
+      {
+        animation: 150,
+        ghostClass: "blue-background-class",
+        draggable: ".drag"
+      },
+      data1
+    );
+    let edit2 = new editSortRecommend(
+      gridDemo2,
+      {
+        animation: 150,
+        ghostClass: "blue-background-class",
+        draggable: ".drag"
+      },
+      data2
+    );
+    console.log(edit1, edit2);
+    edit1.currentID = data1[0].id;
+    $("#openTabsEdit").on("click", function() {
+      // 显示弹窗 栏目编辑
+      $("#popup").fadeIn();
+      // 关闭打开按钮
+      $(this).css("display", "none");
+      edit1.giveToCurrentID(edit1.currentID);
+    });
+    $("#close").on("click", function() {
+      // 关闭弹窗
+      $("#popup").fadeOut();
+      $("#openTabsEdit").fadeIn();
+      // 执行返回最新数据的方法
+      let res = edit1.getResult();
+      console.log(res);
+      // 更新组件实例出来的对象的数据
+      edit1.data = res.mine;
+      edit1.currentID = res.currentID;
+      edit2.data = res.recommend;
+      console.log(edit1, edit2);
+    });
+  </script>
+</html>

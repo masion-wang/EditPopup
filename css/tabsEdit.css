@@ -1,0 +1,125 @@
+#popup{
+  position: absolute;
+  top:0%;
+  left:0%;
+  z-index:999;
+  background-color: white;
+  height:100%;
+  width:100%;
+}
+.wrap {
+  margin: 20px auto;
+  padding: 0.2rem;
+  display: flex;
+  flex-flow: wrap;
+  width: 100%;
+}
+.wrap >div{
+  width: 23%;
+  margin: .15rem;
+  position: relative;
+}
+.wrap div.item1 {
+  width: 100%;
+  height:2rem;
+  line-height: 2rem;
+  border-radius: 5px;
+  background: rgba(194, 193, 193, 0.438);
+  border: 1px solid lightgray;
+  text-align: center;
+  cursor: move;
+  font-size:.72rem;
+  overflow: hidden;
+}
+.wrap div.item2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height:2rem;
+  line-height: 2rem;
+  border-radius: 5px;
+  background: white;
+  text-align: center;
+  border: 1px solid lightgray;
+  text-align: center;
+  cursor: move;
+  font-size:.65rem;
+  overflow: hidden;
+}
+.item2{
+  overflow: hidden;
+}
+.closeX {
+  display: none;
+  position: absolute;
+  top: -23%;
+  right: -9%;
+  width:1rem;
+  height:1rem;
+  line-height:1rem;
+  font-size:.8rem;
+  text-align: center;
+  background:#ccc;
+  color:white;
+  border-radius: 50%;
+}
+.closeAdd,.closeAdd+div {
+  display: inline-block;
+}
+
+.wrap2 div.active {
+  width: 150px;
+  height: 180px;
+  position: absolute;
+  background: goldenrod;
+  box-shadow: 0 0 2px 2px #555;
+  border-radius: 5px;
+  z-index: 10;
+}
+#openTabsEdit {
+  /* position: absolute;
+  top: 0.5%;
+  right: 0%; */
+}
+#openTabsEdit img{
+  width:1rem;
+  height:1rem;
+}
+#close{
+  margin-bottom:10px;
+}
+#close img{
+  width:1rem;
+  height:1rem;
+}
+.mine {
+  display: flex;
+  justify-content: space-between;
+}
+.recommend {
+  display: flex;
+  justify-content: space-between;
+}
+.mineChannel{
+  font-size:1rem;
+}
+.mineFirstDiv {
+  display: flex;
+}
+.mineFirstDiv > div {
+  margin-right:1rem;
+}
+.mineFirstDiv .clickChnnel{
+  margin-top:.2rem;
+  font-size:.8rem;
+  color:#ccc;
+}
+.editOrCompelete{
+  border:1px solid red;
+  border-radius:30px;
+  font-size:.5rem;
+  height:.5rem;
+  line-height:.5rem;
+  color:red;
+  padding:.2rem .4rem 
+}
